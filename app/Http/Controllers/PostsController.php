@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
 use App\Post;
 use DB;
 class PostsController extends Controller
@@ -44,7 +45,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        if(auth()->user()->id !== '2'){
+        if(auth()->user()->id != '11' ){
             return redirect('/posts')->with('error','Unauthorized Page');
         }
         return view('posts.create');
@@ -145,7 +146,7 @@ class PostsController extends Controller
         }
 
     // Create  Post
-    $post = new Post;
+    $post = Post::find($id);
     $post->title = $request->input('title');
     $post->body = $request->input('body');
     $post->user_id = auth()->user()->id;

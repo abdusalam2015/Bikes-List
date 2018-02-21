@@ -75,7 +75,10 @@ class PostsController extends Controller
                 // File Name to Store
                 $fileNameToStore= $filename.'_'.time().'.'.$extension;
                 //Upload Image
-                $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+                //this is the path for server
+                //$path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+               // this is the pathe for herouko
+                $path = $request->file('cover_image')->move(base_path(),'/public/cover_images/',$fileNameToStore);
             }else {
                 $fileNameToStore = 'noimage.jpg';
             }

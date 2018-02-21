@@ -78,7 +78,7 @@ class PostsController extends Controller
                 //this is the path for server
                 //$path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
                // this is the pathe for herouko
-                $path = $request->file('cover_image')->move(base_path(),'/public/cover_images/',$fileNameToStore);
+                $path = $request->file('cover_image')->move(base_path() , '/public/images/' ,$fileNameToStore);
             }else {
                 $fileNameToStore = 'noimage.jpg';
             }
@@ -171,8 +171,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        return redirect('/posts')->with('error','Unauthorized Page');
+
         $post = Post::find($id);
-        if(auth()->user()->id !== $post->user_id){
+        if(auth()->user()->id != $post->user_id){
             return redirect('/posts')->with('error','Unauthorized Page');
         }
         if($post->cover_image != 'noimage.jpg'){

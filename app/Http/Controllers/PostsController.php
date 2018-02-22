@@ -33,8 +33,7 @@ class PostsController extends Controller
      // $posts = DB::select('SELECT * FROM posts');
      //$posts = Post::orderBy('title','asc')->take(1)->get();
        //$posts = Post::orderBy('title','asc')->get();
-       $posts = Post::orderBy('created_at','asc')->paginate(5);
-
+       $posts = Post::orderBy('created_at','asc')->paginate(50);
        return view('posts/index')->with('posts',$posts);
 
     }
@@ -78,7 +77,7 @@ class PostsController extends Controller
                 //this is the path for server
                 //$path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
                // this is the pathe for herouko
-                $path = $request->file('cover_image')->move(base_path() , '/public/images/' ,$fileNameToStore);
+                $path = $request->file('cover_image')->move( 'cover_images' , $fileNameToStore);
             }else {
                 $fileNameToStore = 'noimage.jpg';
             }
@@ -145,7 +144,9 @@ class PostsController extends Controller
             // File Name to Store
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             //Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+           // $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
+            $path = $request->file('cover_image')->move( 'cover_images' , $fileNameToStore);
+
         }
 
     // Create  Post
@@ -171,8 +172,6 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        return redirect('/posts')->with('error','Unauthorized Page');
-
         $post = Post::find($id);
         if(auth()->user()->id != $post->user_id){
             return redirect('/posts')->with('error','Unauthorized Page');

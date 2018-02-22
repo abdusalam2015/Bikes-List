@@ -32,7 +32,6 @@
                                             <div class="col-md-8 col-sm-8">
                                                 <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
                                                 <small>Written on {{$post->created_at}} by {{$post->user->name}}</small><hr>        
-                                                <h1>{{$post->id}}</h1>
                                                 @if(!Auth::guest())
                                                     @if(Auth::user()->id == $post->user_id)
                                                     <a href="/posts/{{$post->id}}/edit" class='btn btn-primary'> Edit </a> 

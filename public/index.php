@@ -34,7 +34,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../laravel/bootstrap/app.php';
+$app = require_once __DIR__.'/../ATCO/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------

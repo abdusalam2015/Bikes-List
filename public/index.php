@@ -34,7 +34,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'atco/bootstrap/app.php';
+$app = require_once __DIR__.'/atco/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------

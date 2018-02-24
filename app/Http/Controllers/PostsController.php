@@ -33,9 +33,8 @@ class PostsController extends Controller
      // $posts = DB::select('SELECT * FROM posts');
      //$posts = Post::orderBy('title','asc')->take(1)->get();
        //$posts = Post::orderBy('title','asc')->get();
-       $posts = Post::orderBy('created_at','asc')->paginate(50);
+       $posts = Post::orderBy('created_at','desc')->paginate(30);
        return view('posts/index')->with('posts',$posts);
-
     }
     /**
      * Show the form for creating a new resource.

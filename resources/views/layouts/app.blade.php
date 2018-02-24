@@ -10,7 +10,10 @@
     <title>ATCO</title>
 
     <!-- Styles -->
+    <link href="{{ asset('/../bootstrap/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">

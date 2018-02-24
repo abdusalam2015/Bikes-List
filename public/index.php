@@ -21,7 +21,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../arcane-brook-40749/vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 /*
 |--------------------------------------------------------------------------
 | Turn On The Lights

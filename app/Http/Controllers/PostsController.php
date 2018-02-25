@@ -76,7 +76,7 @@ class PostsController extends Controller
                 //this is the path for server
                 //$path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
                // this is the pathe for herouko
-                $path = $request->file('cover_image')->move( '/cover_images' , $fileNameToStore);
+                $path = $request->file('cover_image')->move( 'cover_images' , $fileNameToStore);
             }else {
                 $fileNameToStore = 'noimage.jpg';
             }
@@ -144,7 +144,7 @@ class PostsController extends Controller
             $fileNameToStore= $filename.'_'.time().'.'.$extension;
             //Upload Image
            // $path = $request->file('cover_image')->storeAs('public/cover_images',$fileNameToStore);
-            $path = $request->file('cover_image')->move( '/cover_images' , $fileNameToStore);
+            $path = $request->file('cover_image')->move( 'cover_images' , $fileNameToStore);
         }
 
     // Create  Post

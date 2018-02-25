@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -34,7 +33,7 @@
                                                 <small> {!! $post->body !!}  </small>
                                                     @if(!Auth::guest())
                                                     @if(Auth::user()->id == $post->user_id)
-                                                    <a href="/posts/{{$post->id}}/edit" class='btn btn-primary'> Edit </a> 
+                                                    <a href='/posts/{{$post->id}}/edit' class="btn btn-primary"> Edit </a> 
                                                     {!! Form::open(['action' => ['PostsController@destroy' , $post->id], 'method'=>'POST', 'class' => 'btn btn-right pull-right']) !!}
                                                     {{ Form::hidden('_method','DELETE')}}
                                                     {{ Form::submit('Delete',['class' => 'btn btn-danger']) }}

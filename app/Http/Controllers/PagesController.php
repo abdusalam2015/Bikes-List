@@ -19,7 +19,7 @@ class PagesController extends Controller
     public function services(){
         $data = array(
             'title' => 'services',
-            'services' => ['Import Toys & Bicycles From Chines','Find The best Price','
+            'services' => ['Import Toys & Bicycles From China','Find The best Price','
             Dealing with several factories','Find The best quality in a very short time']
         );
         return view('pages.services')->with($data);

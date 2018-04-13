@@ -15,7 +15,7 @@ class PostsController extends Controller
      * @return void
      */
     public function __construct()
-    { 
+    {
         $this->middleware('auth',['except' => ['index','show']]);
     }
 
@@ -27,14 +27,15 @@ class PostsController extends Controller
      */
     public function index()
     {
-          
+
        //$posts = Post::all();
       // $posts = Post::where('title', 'Post Oone')->get();
      // $posts = DB::select('SELECT * FROM posts');
      //$posts = Post::orderBy('title','asc')->take(1)->get();
        //$posts = Post::orderBy('title','asc')->get();
-       $posts = Post::orderBy('created_at','desc')->paginate(30);
-       return view('posts/index')->with('posts',$posts);
+      // return 'hi';
+        $posts = Post::orderBy('created_at','desc')->paginate(30);
+        return view('posts/index')->with('posts',$posts);
     }
     /**
      * Show the form for creating a new resource.
@@ -43,7 +44,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        if(auth()->user()->id != '11' ){
+        if(auth()->user()->id != '1' ){
             return redirect('/posts')->with('error','Unauthorized Page');
         }
         return view('posts.create');
@@ -64,7 +65,7 @@ class PostsController extends Controller
         ]);
         //Handle File Upload
             if($request->hasFile('cover_image')){
-                // Get filename with the extension 
+                // Get filename with the extension
                 $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
                 // Get Just filename
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -134,7 +135,7 @@ class PostsController extends Controller
         ]);
          //Handle File Upload
          if($request->hasFile('cover_image')){
-            // Get filename with the extension 
+            // Get filename with the extension
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
             // Get Just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -159,7 +160,7 @@ class PostsController extends Controller
     }
     $post->save();
         return redirect('/posts')->with('success', 'Post Updated');
-    
+
     }
 
     /**

@@ -13,16 +13,16 @@
                     @endif
                     <div>
                         @if(!Auth::guest())
-                            @if(Auth::user()->id == '11')
+                            @if(Auth::user()->id == '1')
                         <a href="/posts/create" class="btn btn-primary">Create New Post</a>
-                        <hr>    
+                        <hr>
                         @endif
                         @endif
                        @if(count($posts) > 0)
                             <table class="table table-striped">
-                               
+
                                 @foreach($posts as $post)
-                                    <tr>                                  
+                                    <tr>
                                         <div class="well">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4">
@@ -33,21 +33,21 @@
                                                 <small> {!! $post->body !!}  </small>
                                                     @if(!Auth::guest())
                                                     @if(Auth::user()->id == $post->user_id)
-                                                    <a href='/posts/{{$post->id}}/edit' class="btn btn-primary"> Edit </a> 
+                                                    <a href='/posts/{{$post->id}}/edit' class="btn btn-primary"> Edit </a>
                                                     {!! Form::open(['action' => ['PostsController@destroy' , $post->id], 'method'=>'POST', 'class' => 'btn btn-right pull-right']) !!}
                                                     {{ Form::hidden('_method','DELETE')}}
                                                     {{ Form::submit('Delete',['class' => 'btn btn-danger']) }}
                                                     {!!Form::close()!!}
                                                     @endif
                                                 @endif
-                                                <br><small> Written on {{$post->created_at}} by {{$post->user->name}}</small>          
+                                                <br><small> Written on {{$post->created_at}} by {{$post->user->name}}</small>
 
                                                 <hr>
                                             </div>
                                         </div>
-                                        
+
                                         </div>
-                                        
+
                                     </tr>
                                 @endforeach
                             </table>
